@@ -10,14 +10,15 @@ func Hey(remark string) string {
 	var isSilence bool = true
 	var isQuestion bool = false
 	for _, v := range remark {
-		if v != ' ' && v != '\t' {
-			isSilence = false
+		if v == ' ' || v == '\t' || v == '\n' || v == '\r' {
+			continue
 		}
+		isSilence = false
+		isQuestion = false
 		if unicode.IsLetter(rune(v)) {
 			hasLetters = true
 			if !unicode.IsUpper(rune(v)) {
 				isShout = false
-				break
 			}
 		} else if v == '?' {
 			isQuestion = true
