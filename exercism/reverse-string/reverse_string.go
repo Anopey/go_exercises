@@ -1,13 +1,12 @@
 //Package reverse implements the solution to the string reversal problem.
 package reverse
 
-import "unicode/utf8"
-
 //Reverse function reverses a given string
 func Reverse(inp string) string {
-	var output string
-	for i := utf8.RuneCountInString(inp) - 1; i >= 0; i-- {
-		output += string(inp[i])
+	var output []rune
+	runes := []rune(inp)
+	for i := len(runes) - 1; i >= 0; i-- {
+		output = append(output, runes[i])
 	}
-	return output
+	return string(output)
 }
